@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.mehedi.nasaapiastoroiedradar.databinding.FragmentHomeBinding
+import com.squareup.picasso.Picasso
 
 
 class HomeFragment : Fragment() {
@@ -30,13 +31,17 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         
         viewModel.imageOfTheDay.observe(viewLifecycleOwner) { imageOfTheDay ->
-            Log.d("TAG", "imageOfTheDay: $imageOfTheDay")
-            
-            
+            imageOfTheDay?.let {
+                Picasso.with(context)
+                    .load(it.url) // Assuming 'url' is the URL string in ResponseImageOfTheDay
+                    .into(binding.ivNasa)
+
+            }
         }
-        
-        
+
     }
     
     
 }
+
+
