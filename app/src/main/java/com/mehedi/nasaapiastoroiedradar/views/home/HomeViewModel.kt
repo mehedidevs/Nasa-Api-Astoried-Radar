@@ -9,6 +9,8 @@ import com.mehedi.nasaapiastoroiedradar.data.remote.api.Network
 import kotlinx.coroutines.launch
 
 class HomeViewModel : ViewModel() {
+
+    private val imageNasa = MutableLiveData<String>()
     
     private val _imageOfTheDay = MutableLiveData<ResponseImageOfTheDay>()
     val imageOfTheDay: LiveData<ResponseImageOfTheDay>
