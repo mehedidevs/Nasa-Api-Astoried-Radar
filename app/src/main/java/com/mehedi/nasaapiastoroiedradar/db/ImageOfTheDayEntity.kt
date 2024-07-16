@@ -8,13 +8,10 @@ import androidx.room.PrimaryKey
 data class ImageOfTheDayEntity(
     @PrimaryKey
     val date: String,
-    val explanation: String?,
-    val hdurl: String?,
-    val mediaType: String?,
-    val serviceVersion: String?,
-    val title: String?,
-    val url: String?
-
-
-
+    val explanation: String,
+    val hdurl: String,
+    val mediaType: String,
+    val serviceVersion: String,
+    val title: String,
+    val url: String
 )

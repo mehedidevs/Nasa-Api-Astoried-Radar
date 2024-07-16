@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
+import com.denzcoskun.imageslider.models.SlideModel
 import com.mehedi.nasaapiastoroiedradar.R
 import com.mehedi.nasaapiastoroiedradar.databinding.FragmentHomeBinding
 import java.text.SimpleDateFormat
@@ -34,6 +35,8 @@ class HomeFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
+
+
         return binding.root
     }
 
@@ -51,48 +54,25 @@ class HomeFragment : Fragment() {
             }
         }
 
-        val currentDate = getCurrentDate() // Function to get the current date
-        viewModel.getImageFromDb(currentDate).observe(viewLifecycleOwner) { imageOfTheDay ->
-            imageOfTheDay?.let {
-                binding.explanationTextView.text = it.explanation
-                bindImage(binding.imageViewOfTheDay, it.url)
-            }
-        }
-    }
-
-    private fun getCurrentDate(): String {
-        val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-        return sdf.format(Date())
-    }
-
-    private fun bindImage(imageView: ImageView, imageUrl: String?) {
-        imageUrl?.let {
-            Glide.with(this)
-                .load(it)
-                .placeholder(R.drawable.placeholder)
-                .error(R.drawable.error)
-                .into(imageView)
-        } ?: run {
-            Log.e("TAG", "Image URL is null")
-            imageView.setImageResource(R.drawable.error)
-        }
-    }
-}
-
-        
         viewModel.imageOfTheDay.observe(viewLifecycleOwner) { imageOfTheDay ->
             imageOfTheDay?.let {
-                Picasso.with(context)
-                    .load(it.url) // Assuming 'url' is the URL string in ResponseImageOfTheDay
-                    .into(binding.ivNasa)
+                Picasso.get()
+                    .load(it.url)
+                    .into(binding.imageViewOfTheDay)
 
+                binding.tvTitle.text = it.title
             }
         }
 
+        viewModel.getAllDataFromDb().observe(viewLifecycleOwner) { imageOfTheDay ->
+            val slideModels = imageOfTheDay.map { image ->
+                SlideModel(image.hdurl, image.title)
+            }
+            binding.imageSlider.setImageList(slideModels)
+        }
     }
-    
-    
-}
 
+
+}
 
 
