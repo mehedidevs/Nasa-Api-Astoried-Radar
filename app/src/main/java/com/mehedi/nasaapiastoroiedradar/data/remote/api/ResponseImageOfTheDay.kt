@@ -1,4 +1,4 @@
-package com.mehedi.nasaapiastoroiedradar.data.models
+package com.mehedi.nasaapiastoroiedradar.data.remote.api
 
 
 import com.squareup.moshi.Json
