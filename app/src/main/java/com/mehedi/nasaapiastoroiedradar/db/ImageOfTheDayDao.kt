@@ -12,6 +12,6 @@ interface ImageOfTheDayDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(image: ImageOfTheDayEntity)
 
-    @Query("SELECT * FROM image_of_the_day WHERE date = :date")
-    fun getImage(date: String): LiveData<ImageOfTheDayEntity>
+    @Query("SELECT * FROM image_of_the_day")
+    fun getAllData(): LiveData<List<ImageOfTheDayEntity>>
 }

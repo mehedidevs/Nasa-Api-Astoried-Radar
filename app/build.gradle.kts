@@ -71,4 +71,5 @@ dependencies {
     implementation(libs.picasso)
     implementation(libs.retrofit)
     implementation(libs.retrofit.scalars)
+    implementation(libs.imageSlideshow)
 }

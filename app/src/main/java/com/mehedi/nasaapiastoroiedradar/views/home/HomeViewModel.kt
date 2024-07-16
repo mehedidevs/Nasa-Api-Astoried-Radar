@@ -18,12 +18,6 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private val database = AppDatabase.getDatabase(application)
     private val imageOfTheDayDao = database.imageOfTheDayDao()
 
-
-class HomeViewModel : ViewModel() {
-
-    private val imageNasa = MutableLiveData<String>()
-    
-
     private val _imageOfTheDay = MutableLiveData<ResponseImageOfTheDay>()
     val imageOfTheDay: LiveData<ResponseImageOfTheDay>
         get() = _imageOfTheDay
@@ -49,16 +43,17 @@ class HomeViewModel : ViewModel() {
                 if (response.isSuccessful && response.body() != null) {
                     val image = response.body()!!
                     _imageOfTheDay.postValue(image)
+
                     imageOfTheDayDao.insert(
                         ImageOfTheDayEntity(
-                        date = image.date!!,
-                        explanation = image.explanation,
-                        hdurl = image.hdurl,
-                        mediaType = image.mediaType,
-                        serviceVersion = image.serviceVersion,
-                        title = image.title,
-                        url = image.url
-                    )
+                            date = image.date!!,
+                            explanation = image.explanation!!,
+                            hdurl = image.hdurl!!,
+                            mediaType = image.mediaType!!,
+                            serviceVersion = image.serviceVersion!!,
+                            title = image.title!!,
+                            url = image.url!!
+                        )
                     )
                 } else {
                     _error.postValue("Error fetching image of the day")
@@ -71,7 +66,7 @@ class HomeViewModel : ViewModel() {
         }
     }
 
-    fun getImageFromDb(date: String): LiveData<ImageOfTheDayEntity> {
-        return imageOfTheDayDao.getImage(date)
+    fun getAllDataFromDb(): LiveData<List<ImageOfTheDayEntity>> {
+        return imageOfTheDayDao.getAllData()
     }
 }
