@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
 
     <data>
         <variable
             name="viewModel"
             type="com.mehedi.nasaapiastoroiedradar.views.home.HomeViewModel" />
 
+
     </data>
 
     <LinearLayout
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -30,6 +41,7 @@
             android:layout_marginTop="16dp"
             app:imageUrl="@{viewModel.imageOfTheDay.url}"/>
 
+
         <TextView
             android:id="@+id/explanationTextView"
             android:layout_width="match_parent"
@@ -39,4 +51,15 @@
             android:text="@{viewModel.imageOfTheDay.explanation}"/>
 
     </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_nasa"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

@@ -17,6 +17,9 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
+import com.squareup.picasso.Picasso
+
+
 
 class HomeFragment : Fragment() {
 
@@ -36,6 +39,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
         viewModel.loading.observe(viewLifecycleOwner) { isLoading ->
             binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
@@ -74,3 +78,21 @@ class HomeFragment : Fragment() {
         }
     }
 }
+
+        
+        viewModel.imageOfTheDay.observe(viewLifecycleOwner) { imageOfTheDay ->
+            imageOfTheDay?.let {
+                Picasso.with(context)
+                    .load(it.url) // Assuming 'url' is the URL string in ResponseImageOfTheDay
+                    .into(binding.ivNasa)
+
+            }
+        }
+
+    }
+    
+    
+}
+
+
+
