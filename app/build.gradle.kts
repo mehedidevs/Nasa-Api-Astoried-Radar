@@ -39,14 +39,18 @@ android {
     dataBinding {
         enable= true
     }
+    viewBinding {
+
+        enable = true
+    }
 }
 
 dependencies {
 
     implementation(libs.glide)
+    implementation (libs.androidx.recyclerview)
 
 
-    
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -71,4 +75,5 @@ dependencies {
     implementation(libs.picasso)
     implementation(libs.retrofit)
     implementation(libs.retrofit.scalars)
+
 }

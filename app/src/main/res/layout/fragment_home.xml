@@ -14,14 +14,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:background="#010214"
+
+        >
 
         <ProgressBar
             android:id="@+id/progressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            />
 
         <ImageView
             android:id="@+id/imageViewOfTheDay"
@@ -36,6 +40,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:textSize="16sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
             android:text="@{viewModel.imageOfTheDay.explanation}"/>
 
     </LinearLayout>

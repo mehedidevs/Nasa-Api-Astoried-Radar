@@ -3,6 +3,8 @@ package com.mehedi.nasaapiastoroiedradar.data.remote.api
 
 import com.squareup.moshi.Json
 import androidx.annotation.Keep
+import androidx.room.Entity
+
 
 @Keep
 data class ResponseImageOfTheDay(

@@ -3,7 +3,6 @@ package com.mehedi.nasaapiastoroiedradar.db
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-
 @Entity(tableName = "image_of_the_day")
 data class ImageOfTheDayEntity(
     @PrimaryKey
