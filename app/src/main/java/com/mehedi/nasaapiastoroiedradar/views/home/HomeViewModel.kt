@@ -12,10 +12,17 @@ import com.mehedi.nasaapiastoroiedradar.db.AppDatabase
 import com.mehedi.nasaapiastoroiedradar.db.ImageOfTheDayEntity
 import kotlinx.coroutines.launch
 
+
 class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
     private val database = AppDatabase.getDatabase(application)
     private val imageOfTheDayDao = database.imageOfTheDayDao()
+
+
+class HomeViewModel : ViewModel() {
+
+    private val imageNasa = MutableLiveData<String>()
+    
 
     private val _imageOfTheDay = MutableLiveData<ResponseImageOfTheDay>()
     val imageOfTheDay: LiveData<ResponseImageOfTheDay>
