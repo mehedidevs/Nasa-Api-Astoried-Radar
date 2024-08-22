@@ -1,4 +1,4 @@
-package com.mehedi.nasaapiastoroiedradar.data.remote.api
+package com.mehedi.nasaapiastoroiedradar.db.model
 
 
 import com.squareup.moshi.Json
@@ -20,7 +20,4 @@ data class ResponseImageOfTheDay(
     val title: String? = null,
     @Json(name = "url")
     val url: String? = null
-    
-    
-    
 )
