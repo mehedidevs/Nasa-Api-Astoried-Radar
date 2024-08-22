@@ -1,6 +1,7 @@
-package com.mehedi.nasaapiastoroiedradar.data.remote.api
+package com.mehedi.nasaapiastoroiedradar.data.service
 
 
+import com.mehedi.nasaapiastoroiedradar.data.remote.api.ResponseImageOfTheDay
 import com.mehedi.nasaapiastoroiedradar.utils.Constant.API_KEY
 import com.mehedi.nasaapiastoroiedradar.utils.Constant.BASE_URL
 import com.squareup.moshi.Moshi

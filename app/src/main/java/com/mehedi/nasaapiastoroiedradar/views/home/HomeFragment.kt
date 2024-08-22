@@ -72,5 +72,7 @@ class HomeFragment : Fragment() {
             Log.e("TAG", "Image URL is null")
             imageView.setImageResource(R.drawable.error)
         }
+        binding.backbtn.setOnClickListener {
+            requireActivity().onBackPressedDispatcher.onBackPressed()
     }
-}
+} }

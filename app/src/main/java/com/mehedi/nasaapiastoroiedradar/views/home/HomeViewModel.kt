@@ -4,10 +4,9 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mehedi.nasaapiastoroiedradar.data.remote.api.ResponseImageOfTheDay
-import com.mehedi.nasaapiastoroiedradar.data.remote.api.Network
+import com.mehedi.nasaapiastoroiedradar.data.service.Network
 import com.mehedi.nasaapiastoroiedradar.db.AppDatabase
 import com.mehedi.nasaapiastoroiedradar.db.ImageOfTheDayEntity
 import kotlinx.coroutines.launch
