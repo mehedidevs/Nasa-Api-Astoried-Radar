@@ -23,3 +23,4 @@ object AsteroidNetwork {
     val asteroidService: AsteroidService = retrofit.create(AsteroidService::class.java)
 
 }
+

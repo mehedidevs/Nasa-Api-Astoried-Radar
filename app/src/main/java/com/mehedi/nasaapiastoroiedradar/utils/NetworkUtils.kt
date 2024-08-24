@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 
-fun parseAsteroidJsonResult(jsonObject: JSONObject): ArrayList<Asteroid>? {
+fun parseAsteroidJsonResult(jsonObject: JSONObject): ArrayList<Asteroid> {
     val nearEarthObjects = jsonObject.getJSONObject("near_earth_objects")
     val asteroidList = ArrayList<Asteroid>()
     val next7Days = getNext7Days()
