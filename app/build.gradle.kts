@@ -39,6 +39,9 @@ android {
     dataBinding {
         enable= true
     }
+    viewBinding {
+        enable = true
+    }
 }
 
 dependencies {
@@ -72,4 +75,6 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.retrofit.scalars)
     implementation(libs.imageSlideshow)
+
+    implementation ("com.google.android.material:material:1.9.0")
 }

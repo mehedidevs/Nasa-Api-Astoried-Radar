@@ -8,7 +8,9 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.denzcoskun.imageslider.models.SlideModel
+import com.mehedi.nasaapiastoroiedradar.Adapters.NearEarthObjectsAdapter
 import com.mehedi.nasaapiastoroiedradar.R
 import com.mehedi.nasaapiastoroiedradar.databinding.FragmentHomeBinding
 import com.squareup.picasso.Picasso
@@ -17,6 +19,7 @@ class HomeFragment : Fragment() {
 
     private val viewModel by viewModels<HomeViewModel>()
     private lateinit var binding: FragmentHomeBinding
+    private lateinit var adapter: NearEarthObjectsAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -55,11 +58,19 @@ class HomeFragment : Fragment() {
             }
         }
 
-        viewModel.getAllDataFromDb().observe(viewLifecycleOwner) { imageOfTheDay ->
+        viewModel.getAllImageOfTheDayFromDb().observe(viewLifecycleOwner) { imageOfTheDay ->
             val slideModels = imageOfTheDay.map { image ->
                 SlideModel(image.hdurl, image.title)
             }
             binding.imageSlider.setImageList(slideModels)
+        }
+
+        viewModel.asteroidList.observe(viewLifecycleOwner){
+            adapter = NearEarthObjectsAdapter(it){asteroid ->
+                val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(asteroid)
+                findNavController().navigate(action)
+            }
+            binding.recyclerView.adapter = adapter
         }
     }
 

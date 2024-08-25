@@ -4,11 +4,12 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.mehedi.nasaapiastoroiedradar.db.model.ImageOfTheDayEntity
 
 @Database(entities = [ImageOfTheDayEntity::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
-    abstract fun imageOfTheDayDao(): ImageOfTheDayDao
+    abstract fun asteroidDao(): AsteroidDao
 
     companion object {
         @Volatile

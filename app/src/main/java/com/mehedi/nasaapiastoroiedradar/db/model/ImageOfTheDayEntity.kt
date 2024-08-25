@@ -1,4 +1,4 @@
-package com.mehedi.nasaapiastoroiedradar.db
+package com.mehedi.nasaapiastoroiedradar.db.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

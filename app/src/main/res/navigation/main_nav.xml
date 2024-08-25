@@ -3,16 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
-    app:startDestination="@id/feedFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.mehedi.nasaapiastoroiedradar.views.home.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        android:label="Home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
     <fragment
-        android:id="@+id/feedFragment"
-        android:name="com.mehedi.nasaapiastoroiedradar.views.feed.FeedFragment"
-        android:label="fragment_feed"
-        tools:layout="@layout/fragment_feed" />
+        android:id="@+id/detailFragment"
+        android:name="com.mehedi.nasaapiastoroiedradar.views.detail.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail">
+
+        <argument
+            android:name="asteroid"
+            app:argType="com.mehedi.nasaapiastoroiedradar.db.model.Asteroid"
+            app:nullable="false"/>
+
+    </fragment>
 </navigation>
