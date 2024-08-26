@@ -1,7 +1,7 @@
 package com.mehedi.nasaapiastoroiedradar.data.remote.api
 
 
-import com.mehedi.nasaapiastoroiedradar.data.models.ResponseImageOfTheDay
+import com.mehedi.nasaapiastoroiedradar.db.model.ResponseImageOfTheDay
 import com.mehedi.nasaapiastoroiedradar.utils.Constant.API_KEY
 import com.mehedi.nasaapiastoroiedradar.utils.Constant.BASE_URL
 import com.squareup.moshi.Moshi
@@ -20,12 +20,13 @@ interface AsteroidImageOfTheDayService {
 private val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
 
 object Network {
-    
+
     private val retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(MoshiConverterFactory.create(moshi))
         .build()
-    
-    val imageOfTheDayService = retrofit.create(AsteroidImageOfTheDayService::class.java)
-    
+
+    val imageOfTheDayService: AsteroidImageOfTheDayService by lazy {
+        retrofit.create(AsteroidImageOfTheDayService::class.java)
+    }
 }

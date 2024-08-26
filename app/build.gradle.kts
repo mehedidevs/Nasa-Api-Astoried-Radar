@@ -39,9 +39,16 @@ android {
     dataBinding {
         enable= true
     }
+    viewBinding {
+        enable = true
+    }
 }
 
 dependencies {
+
+    implementation(libs.glide)
+
+
     
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -67,4 +74,7 @@ dependencies {
     implementation(libs.picasso)
     implementation(libs.retrofit)
     implementation(libs.retrofit.scalars)
+    implementation(libs.imageSlideshow)
+
+    implementation ("com.google.android.material:material:1.9.0")
 }
